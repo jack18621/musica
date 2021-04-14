@@ -1,0 +1,42 @@
+
+<ion-header>
+  <ion-toolbar color="primary" class="ion-text-center">
+    <ion-title>{{name}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content  color="secondary">
+
+  <div *ngFor="let track of tracks" class="ion-text-center">
+    <ion-item color="secondary">
+      <img [src]="track.track.album.images[0].url" alt="">
+      <ion-label>
+        <p>
+          {{track.track.name}}
+        </p>
+        <small *ngFor="let artist of track.track.album.artists">{{artist.name}} </small>
+      </ion-label>
+      
+      <ion-icon slot="end" (click)="addTrack(track)" *ngIf="!data.checkTrack(track)" name="star-outline"></ion-icon>
+      <ion-icon slot="end" (click)="deleteTrack(track)" *ngIf="data.checkTrack(track)" name="star"></ion-icon>
+    </ion-item>
+    <audio [src]="track.track.preview_url" controls></audio>
+  </div>
+
+  <h1 *ngIf="!href && tracks.length === 0" id="container">No hay favoritos</h1>
+
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-button (click)="dismiss()">
+        <ion-icon slot="start" name="chevron-back"></ion-icon>
+        Regresar
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>
+
+
+

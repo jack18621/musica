@@ -1,0 +1,12 @@
+<div class="ion-padding">
+  <img [src]="quote.background" alt="">
+
+<h4>"{{quote.quote}}"</h4>
+<h6>- {{quote.author}}</h6>
+
+<ion-segment scrollable>
+  <ion-segment-button *ngFor="let tag of quote.tags">
+    <ion-label>#{{tag}}</ion-label>
+  </ion-segment-button>
+</ion-segment>
+</div>

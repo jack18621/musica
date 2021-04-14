@@ -1,0 +1,14 @@
+
+<ion-content color="secondary">
+
+  <div id="container" class="ion-padding">
+    <img src="/assets/logo.PNG">
+    <ion-input [(ngModel)]="ingreso.nombre" placeholder="nombre"></ion-input>
+    <ion-input type="password" [(ngModel)]="ingreso.password" placeholder="contraseña"></ion-input>
+    <ion-button (click)="ingresar()" expand="block">
+      Ingresar
+    </ion-button>
+  </div>
+  
+
+</ion-content>

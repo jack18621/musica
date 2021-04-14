@@ -1,20 +1,43 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+<ion-content color="secondary">
+  <super-tabs (tabChange)="change($event)" [style]="'--st-indicator-color: var(--ion-color-'+ color">
+  <super-tabs-toolbar color="primary" slot="top">
+      <super-tab-button>
+          <ion-icon color="secondary" name="person-outline"></ion-icon>
+          <ion-label color="secondary">Peeta</ion-label>
+      </super-tab-button>
+      <super-tab-button>
+          <ion-icon color="danger" name="heart-outline"></ion-icon>
+          <ion-label color="danger">Me</ion-label>
+      </super-tab-button>
+      <super-tab-button>
+          <ion-icon color="success" name="musical-notes-outline"></ion-icon>
+          <ion-label color="success">Music</ion-label>
+      </super-tab-button>
+  </super-tabs-toolbar>
+  <super-tabs-container>
+      <super-tab>
+          <ion-nav [root]="peetaPage"></ion-nav>
+      </super-tab>
+      <super-tab>
+          <ion-nav [root]="mePage"></ion-nav>
+      </super-tab>
+      <super-tab>
+          <ion-nav [root]="musicPage"></ion-nav>
+      </super-tab>
+  </super-tabs-container>
+</super-tabs>
 </ion-content>
+
+<ion-fab *ngIf="color !== 'success'" class="top-fab" vertical="top" horizontal="start" slot="fixed">
+  <ion-fab-button (click)="showQuote()" color="light">
+      <ion-icon [name]="icon"></ion-icon>
+  </ion-fab-button>
+</ion-fab>
+
+<ion-fab vertical="bottom" horizontal="end" slot="fixed">
+  <ion-fab-button (click)="logOut()" [routerLink]="['/login']"  [color]="color">
+      <ion-icon name="exit-outline"></ion-icon>
+  </ion-fab-button>
+</ion-fab>

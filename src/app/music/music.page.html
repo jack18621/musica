@@ -1,0 +1,22 @@
+
+
+<ion-content class="ion-text-center" color="secondary">
+
+  <ion-item [routerLink]="['../categorie-detail', categorie.id, categorie.name]" routerLinkActive="router-link-active"  detail color="secondary" *ngFor="let categorie of music.categories">
+    <img [src]="categorie.icons[0].url" alt="">
+    <ion-label>{{categorie.name}}</ion-label>
+  </ion-item>
+
+  <ion-spinner id="container" *ngIf="!music.categories" name="bubbles"></ion-spinner>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar color="secondary">
+    <ion-buttons slot="start">
+      <ion-button (click)="favorites()">
+        <ion-icon slot="start" name="star"></ion-icon>
+         favoritos
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>
